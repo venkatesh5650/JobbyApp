@@ -1,0 +1,105 @@
+.loginContainer {
+  background-color: black;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginCard {
+  background-color: #272727;
+  height: 460px;
+  width: 400px;
+  padding: 30px;
+  border-radius: 15px;
+}
+.websitelogo {
+  height: 60px;
+  width: 132px;
+  margin-bottom: 20px;
+}
+.loginInputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.inputlabel {
+  text-align: start;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+.inputLogin {
+  margin: 0;
+  padding-top: 7px;
+  font-size: 25px;
+  color: white;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 20px;
+}
+.loginBtn {
+  height: 50px;
+  width: 330px;
+  background-color: #6366f1;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+  margin-top: 20px;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.errorMsg {
+  margin: 0;
+  color: red;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: start;
+}
+.logoContainer {
+  display: flex;
+  justify-content: center;
+}
+.loginInputContainer {
+  height: 50px;
+  width: 320px;
+  border: solid 2px #64748b;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .loginInputContainer {
+    height: 50px;
+    width: 260px;
+    border: solid 2px #64748b;
+    margin-bottom: 20px;
+  }
+  .websitelogo {
+    height: 40px;
+    width: 92px;
+    margin-bottom: 20px;
+  }
+  .loginCard {
+    height: 400px;
+    width: 320px;
+  }
+  .loginBtn {
+    height: 40px;
+    width: 270px;
+  }
+  .inputLogin {
+    margin: 0;
+    background: transparent;
+  }
+  .inputlabel {
+    margin: 0;
+    padding: 0;
+  }
+}

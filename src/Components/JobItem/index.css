@@ -1,0 +1,129 @@
+.singleJobContainer {
+  padding: 20px;
+  background-color: #202020;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.job-logo {
+  height: 55px;
+  width: 55px;
+  margin-right: 20px;
+}
+.logosContainer {
+  display: flex;
+  align-items: center;
+}
+
+.jobTitleNew {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+.rating {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  margin: 0;
+}
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.singleLoc {
+  display: flex;
+  align-items: center;
+}
+.locationLogo {
+  height: 12px;
+  width: 12px;
+  color: white;
+  margin-left: 0;
+}
+.locationSalaryContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.locContainer {
+  display: flex;
+  align-items: center;
+}
+.empType {
+  color: white;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 7px;
+}
+.packagePerAnnum {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+.descriptures {
+  color: white;
+  font-size: 19px;
+  font-weight: 600;
+  text-align: start;
+}
+.jobDescriptions {
+  color: white;
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 5px;
+  text-align: start;
+}
+.star {
+  height: 25px;
+  width: 25px;
+  background: transparent;
+  color: yellow;
+  margin-right: 6px;
+}
+.horlineNEWXs {
+  color: #b6c5ff;
+  width: 70vw;
+  border-width: 0.2px;
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .horlineNEWXs {
+    color: #b6c5ff;
+    width: 60vw;
+    border-width: 0.2px;
+    margin-bottom: 20px;
+  }
+  .jobTitleNew {
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .locationLogo {
+    height: 30px;
+    width: 30px;
+    color: white;
+    margin: 8px;
+  }
+  .empType {
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 5px;
+  }
+  .locationSalaryContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  .job-logo {
+    height: 70px;
+    width: 70px;
+    margin-right: 20px;
+  }
+}
+
+.link-text {
+  text-decoration: none;
+}

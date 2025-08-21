@@ -1,0 +1,109 @@
+.similarJobDescript {
+  font-size: 22px;
+  color: white;
+  font-weight: 600;
+  text-align: start;
+}
+
+.smJobDescription {
+  font-size: 14px;
+  color: white;
+  width: 280px;
+}
+.similarsingleJobContainer {
+  padding: 20px;
+  background-color: #202020;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-left: 0;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .smJobDescription {
+    font-size: 18px;
+    color: white;
+    width: 320px;
+  }
+  .similarsingleJobContainer {
+    padding: 20px;
+    background-color: #202020;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 20px;
+  }
+  .similarJobDescript {
+    font-size: 26px;
+    color: white;
+    font-weight: 600;
+  }
+}
+.jobLogo {
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+}
+.logosContainer {
+  display: flex;
+  align-items: center;
+}
+
+.jobTitle {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+.rating {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  margin: 0;
+}
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.singleLoc {
+  display: flex;
+  align-items: center;
+}
+.locLogoes {
+  height: 20px;
+  width: 20px;
+  color: white;
+  margin: 7px;
+}
+.locationSalaryContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.locContainer {
+  display: flex;
+  align-items: center;
+}
+.detailss {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 8px;
+}
+.packageNew {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+.jobDescriptions {
+  color: white;
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 5px;
+}
+.similarstar {
+  height: 25px;
+  width: 25px;
+  background: transparent;
+  color: yellow;
+  margin-right: 6px;
+}

@@ -1,0 +1,264 @@
+.jobItemBgContainer {
+  min-height: 100vh;
+  background-color: #000000;
+  padding: 0;
+}
+.renderResultsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  min-height: 100vh;
+  padding: 0;
+}
+.loader-container {
+  color: #6366f1;
+}
+.singleJobItemDetails {
+  padding: 20px;
+  margin: 0;
+}
+.singleJobContainer {
+  padding: 20px;
+  background-color: #202020;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin: 10px;
+}
+.jobLogo2 {
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+}
+.logosContainer {
+  display: flex;
+  align-items: center;
+}
+
+.jobTitle2 {
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+.rating2 {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  margin: 0;
+}
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.singleLoc2 {
+  display: flex;
+  align-items: center;
+}
+.locationSalaryContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.locContainer {
+  display: flex;
+  align-items: center;
+}
+.details2 {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 8px;
+}
+.package2 {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+.jobDescription2 {
+  color: white;
+  font-size: 16px;
+  font-weight: 300;
+  margin-right: 5px;
+}
+.star2 {
+  height: 25px;
+  width: 25px;
+  background: transparent;
+  color: yellow;
+  margin-right: 6px;
+}
+.horline3 {
+  color: #b6c5ff;
+  width: 70vw;
+  border-width: 0.2px;
+  margin-bottom: 20px;
+}
+.locLogo2 {
+  height: 30px;
+  width: 30px;
+  color: white;
+  margin: 12px;
+}
+.link-text {
+  text-decoration: none;
+}
+
+.skillsHead {
+  color: white;
+  font-weight: 600;
+  font-size: 30px;
+  text-align: start;
+}
+.allSkillsContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.singleSkillContainer {
+  display: flex;
+  align-items: center;
+  width: 140px;
+  margin-bottom: 25px;
+}
+.skillImg {
+  height: 40px;
+  width: 40px;
+  margin-right: 8px;
+}
+.skillText {
+  font-size: 17px;
+  color: white;
+  font-weight: 400;
+}
+
+.similarJobsContainer {
+}
+.descriptLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.linkText {
+  font-size: 20px;
+  font-weight: 500;
+  color: #6366f1;
+}
+.descriptionCompany {
+  color: white;
+  font-size: 17px;
+  font-weight: 400;
+}
+.visitLinkContainer {
+  display: flex;
+  align-items: center;
+}
+.externalLink {
+  height: 16px;
+  width: 16px;
+  color: #6366f1;
+  margin-left: 6px;
+  margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+  .singleJobItemDetails {
+    padding: 80px;
+  }
+  .jobLogo2 {
+    height: 80px;
+    width: 80px;
+    margin-right: 20px;
+  }
+  .jobTitle2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+  }
+  .star2 {
+    height: 35px;
+    width: 35px;
+    background: transparent;
+    color: yellow;
+    margin-right: 6px;
+  }
+  .ratingContainer {
+    margin: 0;
+  }
+  .rating2 {
+    font-size: 22px;
+    color: white;
+    font-weight: 600;
+  }
+  .locLogo2 {
+    height: 35px;
+    width: 35px;
+    color: white;
+    margin: 12px;
+  }
+  .details2 {
+    font-size: 21px;
+    color: white;
+    font-weight: 400;
+  }
+  .package2 {
+    font-size: 26px;
+    color: white;
+    font-weight: 600;
+  }
+  .jobDescription2 {
+    font-size: 21px;
+    color: white;
+    font-weight: 400;
+  }
+  .horline2 {
+    width: 80vw;
+  }
+  .singleSkillContainer {
+    display: flex;
+    align-items: center;
+    width: 350px;
+  }
+  .skillImg {
+    height: 50px;
+    width: 50px;
+    margin-right: 8px;
+  }
+  .skillText {
+    font-size: 20px;
+    color: white;
+    font-weight: 400;
+  }
+  .lifeAtCompanyContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+  .descriptionCompany {
+    color: white;
+    font-size: 22px;
+    font-weight: 400;
+    width: 750px;
+    text-align: start;
+  }
+  .companyLifeImg {
+    height: 350px;
+    width: 350px;
+    margin-left: 20px;
+  }
+  .allSimilarJobsContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .linkText {
+    font-size: 24px;
+    font-weight: 600;
+    color: #6366f1;
+  }
+  .externalLink {
+    height: 18px;
+    width: 18px;
+  }
+}

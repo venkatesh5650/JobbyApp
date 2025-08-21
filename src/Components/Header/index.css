@@ -1,0 +1,90 @@
+.webLogo {
+  height: 40px;
+  width: 100px;
+}
+@media (min-width: 768px) {
+  .webLogo {
+    height: 50px;
+    width: 140px;
+  }
+}
+.headerContainer {
+  background-color: #2c364c;
+  padding: 20px;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .headerContainer {
+    justify-content: space-around;
+  }
+  .logoutBtn {
+    border: none;
+    outline: none;
+    background-color: #6366f1;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    height: 35px;
+    width: 130px;
+    cursor: pointer;
+  }
+  .largeScreenContainer {
+    display: flex;
+    list-style: none;
+  }
+  .logoutContainer {
+    display: flex;
+  }
+}
+
+.headerBtn {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+@media (min-width: 768px) {
+  .headerBtn {
+    font-size: 25px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+  }
+}
+.icon {
+  margin-right: 10px;
+  height: 30px;
+  width: 30px;
+  fill: white;
+}
+.smallScreenContainer {
+  display: flex;
+  list-style: none;
+}
+.largeScreenContainer {
+  display: none;
+}
+.logoutContainer {
+  display: none;
+}
+@media (min-width: 768px) {
+  .smallScreenContainer {
+    display: none;
+  }
+  .largeScreenContainer {
+    display: flex;
+  }
+  .logoutContainer {
+    display: flex;
+  }
+}
+.logoBtn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+}
