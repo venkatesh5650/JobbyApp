@@ -25,6 +25,29 @@ const employmentTypesList = [
   },
 ]
 
+const locationsList = [
+  {
+    locationId: 1,
+    locationType: 'Hyderabad',
+  },
+  {
+    locationId: 2,
+    locationType: 'Bangalore',
+  },
+  {
+    locationId: 3,
+    locationType: 'Chennai',
+  },
+  {
+    locationId: 4,
+    locationType: 'Delhi',
+  },
+  {
+    locationId: 5,
+    locationType: 'Mumbai',
+  },
+]
+
 const salaryRangesList = [
   {
     salaryRangeId: '1000000',
@@ -57,10 +80,12 @@ class Jobs extends Component {
     status: apiStatusConstants.initial,
     jobDetailsStatus: apiStatusConstants.initial,
     jobDetailsList: [],
+    filteredJobDetails: [],
     searchInput: '',
     title: '',
     empType: [],
     salRange: '',
+    locationType: [],
   }
 
   componentDidMount() {
@@ -91,6 +116,24 @@ class Jobs extends Component {
       },
       this.getJobsDetails, // callback: call API after updating state
     )
+  }
+
+  onClickLocationType = loctype => {
+    this.setState(prevState => {
+      const {locationType, jobDetailsList} = prevState
+      const isSelected = locationType.includes(loctype)
+      const updatedLocType = isSelected
+        ? locationType.filter(type => type !== loctype)
+        : [...locationType, loctype]
+
+      // Filter based on selected locations
+      const filtered =
+        updatedLocType.length === 0
+          ? jobDetailsList
+          : jobDetailsList.filter(job => updatedLocType.includes(job.location))
+
+      return {locationType: updatedLocType, filteredJobDetails: filtered}
+    })
   }
 
   onClickSalRange = range => {
@@ -197,6 +240,7 @@ class Jobs extends Component {
       }))
       this.setState({
         jobDetailsList: updatedData,
+        filteredJobDetails: updatedData,
         jobDetailsStatus: apiStatusConstants.success,
       })
     } else {
@@ -251,7 +295,7 @@ class Jobs extends Component {
   }
 
   getAllJobsDetails = () => {
-    const {jobDetailsList, searchInput} = this.state
+    const {filteredJobDetails, searchInput} = this.state
     return (
       <div>
         <div className="inputContainer2">
@@ -274,7 +318,7 @@ class Jobs extends Component {
           </div>
         </div>
         <ul className="allJobsContainer">
-          {jobDetailsList.map(eachJobDetails => (
+          {filteredJobDetails.map(eachJobDetails => (
             <JobItem
               key={eachJobDetails.id}
               singleJobDetails={eachJobDetails}
@@ -342,6 +386,28 @@ class Jobs extends Component {
                         }
                       />
                       {eachItem.label}
+                    </label>
+                    <br />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <hr className="horline" />
+            <div className="empTypeCategory">
+              <h1 className="typeHead">Type of Location</h1>
+              <ul className="listContainer">
+                {locationsList.map(eachItem => (
+                  <li className="typeContainer" key={eachItem.locationId}>
+                    <label className="label">
+                      <input
+                        type="checkbox"
+                        name="subscribe"
+                        className="checkInput"
+                        onChange={() =>
+                          this.onClickLocationType(eachItem.locationType)
+                        }
+                      />
+                      {eachItem.locationType}
                     </label>
                     <br />
                   </li>

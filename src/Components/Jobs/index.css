@@ -8,9 +8,11 @@
 }
 .topSection {
   min-height: 100vh;
+  overflow-x: hidden;
 }
 .bottomSection {
   min-height: 100vh;
+  overflow-x: hidden;
 
   /* overflow -y auto */
 }
