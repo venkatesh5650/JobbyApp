@@ -30,6 +30,7 @@ class Login extends Component {
       method: 'POST',
       body: JSON.stringify(userDetails),
     }
+
     const response = await fetch(url, options)
     if (response.ok === true) {
       const data = await response.json()
@@ -66,7 +67,7 @@ class Login extends Component {
                   className="inputLogin"
                   type="text"
                   id="username"
-                  placeholder="Username"
+                  placeholder="rahul"
                   value={userName}
                   onChange={this.onChangeUsername}
                 />
@@ -82,7 +83,7 @@ class Login extends Component {
                   className="inputLogin"
                   type="password"
                   id="password"
-                  placeholder="Password"
+                  placeholder="rahul@2021"
                   value={passWord}
                   onChange={this.onChangePassword}
                 />
