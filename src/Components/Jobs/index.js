@@ -7,64 +7,25 @@ import JobItem from '../JobItem'
 import './index.css'
 
 const employmentTypesList = [
-  {
-    label: 'Full Time',
-    employmentTypeId: 'FULLTIME',
-  },
-  {
-    label: 'Part Time',
-    employmentTypeId: 'PARTTIME',
-  },
-  {
-    label: 'Freelance',
-    employmentTypeId: 'FREELANCE',
-  },
-  {
-    label: 'Internship',
-    employmentTypeId: 'INTERNSHIP',
-  },
+  {label: 'Full Time', employmentTypeId: 'FULLTIME'},
+  {label: 'Part Time', employmentTypeId: 'PARTTIME'},
+  {label: 'Freelance', employmentTypeId: 'FREELANCE'},
+  {label: 'Internship', employmentTypeId: 'INTERNSHIP'},
 ]
 
 const locationsList = [
-  {
-    locationId: 1,
-    locationType: 'Hyderabad',
-  },
-  {
-    locationId: 2,
-    locationType: 'Bangalore',
-  },
-  {
-    locationId: 3,
-    locationType: 'Chennai',
-  },
-  {
-    locationId: 4,
-    locationType: 'Delhi',
-  },
-  {
-    locationId: 5,
-    locationType: 'Mumbai',
-  },
+  {locationId: 1, locationType: 'Hyderabad'},
+  {locationId: 2, locationType: 'Bangalore'},
+  {locationId: 3, locationType: 'Chennai'},
+  {locationId: 4, locationType: 'Delhi'},
+  {locationId: 5, locationType: 'Mumbai'},
 ]
 
 const salaryRangesList = [
-  {
-    salaryRangeId: '1000000',
-    label: '10 LPA and above',
-  },
-  {
-    salaryRangeId: '2000000',
-    label: '20 LPA and above',
-  },
-  {
-    salaryRangeId: '3000000',
-    label: '30 LPA and above',
-  },
-  {
-    salaryRangeId: '4000000',
-    label: '40 LPA and above',
-  },
+  {salaryRangeId: '1000000', label: '10 LPA and above'},
+  {salaryRangeId: '2000000', label: '20 LPA and above'},
+  {salaryRangeId: '3000000', label: '30 LPA and above'},
+  {salaryRangeId: '4000000', label: '40 LPA and above'},
 ]
 
 const apiStatusConstants = {
@@ -93,6 +54,7 @@ class Jobs extends Component {
     this.getJobsDetails()
   }
 
+  // ===================== Search =====================
   onChangeSearch = event => {
     this.setState({searchInput: event.target.value})
   }
@@ -102,56 +64,75 @@ class Jobs extends Component {
     this.setState({title: searchInput, searchInput: ''}, this.getJobsDetails)
   }
 
-  onClickEmpType = label => {
-    this.setState(
-      prevState => {
-        const {empType} = prevState
-        const isSelected = empType.includes(label)
-
-        const updatedEmpType = isSelected
-          ? empType.filter(type => type !== label) // remove
-          : [...empType, label] // add
-
-        return {empType: updatedEmpType}
-      },
-      this.getJobsDetails, // callback: call API after updating state
-    )
+  handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      this.onClickSearch()
+    }
   }
 
-  onClickLocationType = loctype => {
+  // ===================== Filters =====================
+  onClickEmpType = label => {
     this.setState(prevState => {
-      const {locationType, jobDetailsList} = prevState
-      const isSelected = locationType.includes(loctype)
-      const updatedLocType = isSelected
-        ? locationType.filter(type => type !== loctype)
-        : [...locationType, loctype]
-
-      // Filter based on selected locations
-      const filtered =
-        updatedLocType.length === 0
-          ? jobDetailsList
-          : jobDetailsList.filter(job => updatedLocType.includes(job.location))
-
-      return {locationType: updatedLocType, filteredJobDetails: filtered}
-    })
+      const {empType} = prevState
+      const updatedEmpType = empType.includes(label)
+        ? empType.filter(type => type !== label)
+        : [...empType, label]
+      return {empType: updatedEmpType}
+    }, this.getJobsDetails)
   }
 
   onClickSalRange = range => {
     this.setState({salRange: range}, this.getJobsDetails)
   }
 
+  onClickLocationType = loctype => {
+    this.setState(prevState => {
+      const {locationType} = prevState
+      const updatedLocType = locationType.includes(loctype)
+        ? locationType.filter(type => type !== loctype)
+        : [...locationType, loctype]
+      return {locationType: updatedLocType}
+    }, this.applyLocationFilter)
+  }
+
+  // ===================== Reset Filters =====================
+  resetFilters = () => {
+    this.setState(
+      {
+        empType: [],
+        salRange: '',
+        locationType: [],
+        title: '',
+        searchInput: '',
+      },
+      this.getJobsDetails,
+    )
+  }
+
+  // ===================== Location Filter Local =====================
+  applyLocationFilter = () => {
+    const {jobDetailsList, locationType} = this.state
+    if (locationType.length === 0) {
+      this.setState({filteredJobDetails: jobDetailsList})
+      return
+    }
+    const filtered = jobDetailsList.filter(job =>
+      locationType.includes(job.location),
+    )
+    this.setState({filteredJobDetails: filtered})
+  }
+
+  // ===================== API Calls =====================
   getProfileDetails = async () => {
     this.setState({status: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const url = 'https://apis.ccbp.in/profile'
     const options = {
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
+      headers: {Authorization: `Bearer ${jwtToken}`},
     }
     const response = await fetch(url, options)
-    if (response.ok === true) {
+    if (response.ok) {
       const data = await response.json()
       const profile = data.profile_details
       const updatedData = {
@@ -168,12 +149,49 @@ class Jobs extends Component {
     }
   }
 
+  getJobsDetails = async () => {
+    this.setState({jobDetailsStatus: apiStatusConstants.inProgress})
+    const {title, empType, salRange} = this.state
+    const multiEmpType = empType.join(',')
+    const jwtToken = Cookies.get('jwt_token')
+    const url = `https://apis.ccbp.in/jobs?search=${title}&employment_type=${multiEmpType}&minimum_package=${salRange}`
+    const options = {
+      method: 'GET',
+      headers: {Authorization: `Bearer ${jwtToken}`},
+    }
+    const response = await fetch(url, options)
+    if (response.ok) {
+      const data = await response.json()
+      const updatedData = data.jobs.map(eachJob => ({
+        companyLogoUrl: eachJob.company_logo_url,
+        employmentType: eachJob.employment_type,
+        id: eachJob.id,
+        jobDescription: eachJob.job_description,
+        location: eachJob.location,
+        packagePerAnnum: eachJob.package_per_annum,
+        rating: eachJob.rating,
+        title: eachJob.title,
+      }))
+      this.setState(
+        {
+          jobDetailsList: updatedData,
+          filteredJobDetails: updatedData,
+          jobDetailsStatus: apiStatusConstants.success,
+        },
+        this.applyLocationFilter,
+      )
+    } else {
+      this.setState({jobDetailsStatus: apiStatusConstants.failure})
+    }
+  }
+
+  // ===================== Profile Section =====================
   getProfileCard = () => {
     const {profileDetails} = this.state
     const {name, profileImgUrl, shortBio} = profileDetails
     return (
       <div className="profileCard">
-        <img src={profileImgUrl} alt="" className="profileImg" />
+        <img src={profileImgUrl} alt="profile" className="profileImg" />
         <h1 className="profile">{name}</h1>
         <p className="bio">{shortBio}</p>
       </div>
@@ -192,6 +210,12 @@ class Jobs extends Component {
     </div>
   )
 
+  getLoader = () => (
+    <div className="loader-container" data-testid="loader">
+      <Loader type="ThreeDots" color="#6366f1" height="50" width="50" />
+    </div>
+  )
+
   renderProfileSection = () => {
     const {status} = this.state
     switch (status) {
@@ -206,52 +230,7 @@ class Jobs extends Component {
     }
   }
 
-  getLoader = () => (
-    <div className="loader-container" data-testid="loader">
-      <Loader type="ThreeDots" color="#6366f1" height="50" width="50" />
-    </div>
-  )
-
-  getJobsDetails = async () => {
-    const {title, empType, salRange} = this.state
-    const multiEmpType = empType.join(',')
-    this.setState({jobDetailsStatus: apiStatusConstants.inProgress})
-    const url = `https://apis.ccbp.in/jobs?search=${title}&employment_type=${multiEmpType}&minimum_package=${salRange}`
-    const jwtToken = Cookies.get('jwt_token')
-    const options = {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    }
-    const response = await fetch(url, options)
-    if (response.ok === true) {
-      const data = await response.json()
-      const jobDetails = data.jobs
-      const updatedData = jobDetails.map(eachJob => ({
-        companyLogoUrl: eachJob.company_logo_url,
-        employmentType: eachJob.employment_type,
-        id: eachJob.id,
-        jobDescription: eachJob.job_description,
-        location: eachJob.location,
-        packagePerAnnum: eachJob.package_per_annum,
-        rating: eachJob.rating,
-        title: eachJob.title,
-      }))
-      this.setState({
-        jobDetailsList: updatedData,
-        filteredJobDetails: updatedData,
-        jobDetailsStatus: apiStatusConstants.success,
-      })
-    } else {
-      this.setState({jobDetailsStatus: apiStatusConstants.failure})
-    }
-  }
-
-  onClickRetryBtn = () => {
-    this.setState({status: apiStatusConstants.success}, this.getJobsDetails)
-  }
-
+  // ===================== Jobs Section =====================
   getJobsFetchFailure = () => (
     <div className="jobFailureContainer">
       <img
@@ -263,7 +242,7 @@ class Jobs extends Component {
       <p className="jobfailContent">
         We cannot seem to find the page you are looking for.
       </p>
-      <button className="retryBtn" type="button" onClick={this.onClickRetryBtn}>
+      <button className="retryBtn" type="button" onClick={this.getJobsDetails}>
         Retry
       </button>
     </div>
@@ -274,7 +253,7 @@ class Jobs extends Component {
       <img
         src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
         className="jobFailureImg"
-        alt="failure view"
+        alt="no jobs"
       />
       <h1 className="jobFailhead">No Jobs Found</h1>
       <p className="jobfailContent">
@@ -284,10 +263,10 @@ class Jobs extends Component {
   )
 
   getJobSearchResults = () => {
-    const {jobDetailsList} = this.state
+    const {filteredJobDetails} = this.state
     return (
       <div className="jobdetailsContainer">
-        {jobDetailsList.length === 0
+        {filteredJobDetails.length === 0
           ? this.getNoJobsFound()
           : this.getAllJobsDetails()}
       </div>
@@ -304,6 +283,7 @@ class Jobs extends Component {
             placeholder="Search"
             className="input"
             onChange={this.onChangeSearch}
+            onKeyDown={this.handleKeyDown}
             value={searchInput}
           />
           <div className="iconContainer">
@@ -344,33 +324,27 @@ class Jobs extends Component {
   }
 
   render() {
-    const {searchInput} = this.state
+    const {empType, locationType, salRange} = this.state
     return (
       <div className="bgJobsContainer">
         <Header />
+        {/* Reset Button Below Logout */}
+        <div className="resetButtonBelowLogout">
+          <button
+            type="button"
+            className="resetBtn"
+            onClick={this.resetFilters}
+          >
+            Reset Filters
+          </button>
+        </div>
+
         <div className="jobsContainer">
           <div className="topSection">
-            <div className="inputContainer">
-              <input
-                type="search"
-                placeholder="Search"
-                className="input"
-                onChange={this.onChangeSearch}
-                value={searchInput}
-              />
-              <div className="iconContainer">
-                <button
-                  type="button"
-                  className="SearchIconBtn"
-                  onClick={this.onClickSearch}
-                  data-testid="searchButton"
-                >
-                  <IoIosSearch className="SearchIcon" />
-                </button>
-              </div>
-            </div>
-            <div>{this.renderProfileSection()}</div>
+            {this.renderProfileSection()}
             <hr className="horlines" />
+
+            {/* Employment Type */}
             <div className="empTypeCategory">
               <h1 className="typeHead">Type of Employment</h1>
               <ul className="listContainer">
@@ -379,20 +353,22 @@ class Jobs extends Component {
                     <label className="label">
                       <input
                         type="checkbox"
-                        name="subscribe"
                         className="checkInput"
                         onChange={() =>
                           this.onClickEmpType(eachItem.employmentTypeId)
                         }
+                        checked={empType.includes(eachItem.employmentTypeId)}
                       />
                       {eachItem.label}
                     </label>
-                    <br />
                   </li>
                 ))}
               </ul>
             </div>
+
             <hr className="horline" />
+
+            {/* Location Filter */}
             <div className="empTypeCategory">
               <h1 className="typeHead">Type of Location</h1>
               <ul className="listContainer">
@@ -401,20 +377,22 @@ class Jobs extends Component {
                     <label className="label">
                       <input
                         type="checkbox"
-                        name="subscribe"
                         className="checkInput"
                         onChange={() =>
                           this.onClickLocationType(eachItem.locationType)
                         }
+                        checked={locationType.includes(eachItem.locationType)}
                       />
                       {eachItem.locationType}
                     </label>
-                    <br />
                   </li>
                 ))}
               </ul>
             </div>
+
             <hr className="horline" />
+
+            {/* Salary Filter */}
             <div className="empTypeCategory">
               <h1 className="typeHead">Salary Range</h1>
               <ul className="listContainer">
@@ -423,23 +401,23 @@ class Jobs extends Component {
                     <label className="label">
                       <input
                         type="radio"
-                        name="salary" // All radios share this name to be grouped
+                        name="salary"
                         className="checkInput"
                         onChange={() =>
                           this.onClickSalRange(eachItem.salaryRangeId)
                         }
+                        checked={salRange === eachItem.salaryRangeId}
                       />
                       {eachItem.label}
                     </label>
-                    <br />
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="bottomSection">
-            <div>{this.renderJobsSection()}</div>
-          </div>
+
+          {/* Jobs List */}
+          <div className="bottomSection">{this.renderJobsSection()}</div>
         </div>
       </div>
     )

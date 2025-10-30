@@ -1,291 +1,258 @@
-.jobsContainer {
-  padding: 20px;
-  min-height: 100vh;
-  width: 100vw;
-  background-color: #000000;
-  margin-left: 0;
-  margin-right: 0;
-}
-.topSection {
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-.bottomSection {
-  min-height: 100vh;
-  overflow-x: hidden;
-
-  /* overflow -y auto */
-}
-@media (min-width: 768px) {
-  .jobsContainer {
-    padding: 20px;
-    min-height: 100vh;
-    width: 100vw;
-    background-color: #000000;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .topSection {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow-y: auto;
-    width: 20vw;
-    scrollbar-color: white #000000;
-  }
-  .bottomSection {
-    flex-grow: 1;
-    overflow-y: auto;
-    height: 100vh;
-    width: 60vw;
-    scrollbar-color: white #000000;
-
-    /* overflow -y auto */
-  }
-  .horlines {
-    color: #b6c5ff;
-    width: 50vw;
-    border-width: 0.2px;
-    margin-bottom: 20px;
-  }
-}
+/* ========== Overall Container ========== */
 .bgJobsContainer {
+  background-color: #000000;
   min-height: 100vh;
-  width: 100vw;
-  margin: 0;
+  color: #ffffff;
+  font-family: 'Roboto';
+  display: flex;
+  flex-direction: column;
 }
-.inputContainer {
+
+/* ========== Layout Sections ========== */
+.jobsContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  border-radius: 7px;
-  height: 35px;
-  width: 330px;
-  border: 2px solid #7e858e;
+  width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
 }
-.input {
-  height: 35px;
-  width: 130px;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 20px;
-  padding-left: 20px;
-  color: white;
+
+.topSection {
+  width: 30%;
+  padding-right: 20px;
 }
-.SearchIcon {
-  height: 26px;
-  width: 26px;
-  fill: white;
-  margin-right: 15px;
+
+.bottomSection {
+  width: 70%;
 }
-.iconContainer {
-  padding-left: 20px;
-  background-color: #202020;
-  align-self: center;
-}
+
+/* ========== Profile Section ========== */
 .profileCard {
   background-image: url('https://assets.ccbp.in/frontend/react-js/profile-bg.png');
   background-size: cover;
+  border-radius: 15px;
   padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
   margin-bottom: 20px;
 }
-.profile {
-  font-size: 25px;
-  font-weight: 700;
-  color: #6366f1;
-  margin: 0;
-}
-.bio {
-  font-size: 12px;
-  color: #2c364c;
-}
-@media (min-width: 768px) {
-  .bio {
-    font-size: 15px;
-  }
-}
+
 .profileImg {
-  height: 40px;
-  width: 40px;
-  margin: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
-.horlines {
-  color: #b6c5ff;
-  width: 90vw;
-  border-width: 0.2px;
-  margin-bottom: 20px;
-}
-.empTypeCategory {
-  margin-bottom: 20px;
-}
-.typeHead {
-  color: white;
+
+.profile {
+  font-size: 20px;
   font-weight: 600;
-  font-size: 17px;
-  margin-bottom: 15px;
+  margin-top: 10px;
 }
-.label {
-  color: white;
-  font-weight: 500;
+
+.bio {
   font-size: 14px;
-  margin-left: 0;
-  padding: 0;
+  color: #475569;
 }
-.SearchIconBtn {
+
+.profileFailure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+/* ========== Reset Filters Button Below Logout ========== */
+.resetButtonBelowLogout {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 40px 0 0;
+}
+
+.resetBtn {
+  color: white;
+  background-color: #6366f1;
   border: none;
   outline: none;
-  background: transparent;
+  border-radius: 6px;
+  height: 35px;
+  padding: 0 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.resetBtn:hover {
+  background-color: #4f46e5;
+}
+
+/* ========== Filters Section ========== */
+.empTypeCategory {
+  margin-top: 20px;
+}
+
+.typeHead {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.listContainer {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.typeContainer {
+  margin-bottom: 8px;
+}
+
+.label {
+  font-size: 14px;
+  color: #cbd5e1;
   cursor: pointer;
 }
+
 .checkInput {
   margin-right: 10px;
   cursor: pointer;
-  margin-left: 0;
-  padding: 0;
 }
-.typeContainer {
-  margin-bottom: 8px;
-  margin-left: 0;
+
+.horline,
+.horlines {
+  border: 1px solid #475569;
+  margin: 15px 0;
 }
-.listContainer {
-  list-style: none;
-  padding: 0;
-  margin-left: 0;
+
+/* ========== Search Input ========== */
+.inputContainer2 {
+  display: flex;
+  align-items: center;
+  border: 1px solid #64748b;
+  border-radius: 8px;
+  background-color: transparent;
+  margin-bottom: 20px;
+  width: 100%;
 }
-.retryBtn {
-  color: white;
-  background-color: #6366f1;
-  border-radius: 6px;
-  height: 30px;
-  width: 100px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-top: 20px;
+
+.input {
+  flex: 1;
+  background-color: transparent;
   border: none;
   outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px;
 }
-.profileFailure {
-  background-color: black;
-  text-align: center;
+
+.iconContainer {
+  background-color: #272727;
+  border-left: 1px solid #64748b;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.SearchIconBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+.SearchIcon {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+/* ========== Jobs List Section ========== */
+.jobdetailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.allJobsContainer {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ========== Loader and Failure Views ========== */
 .loader-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 50vh;
 }
+
 .jobFailureContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  text-align: center;
-}
-.inputContainer2 {
-  display: none;
-  flex-direction: row;
-  justify-content: space-between;
-  border-radius: 7px;
-  height: 35px;
-  width: 330px;
-  border: 2px solid #7e858e;
-}
-.jobdetailsContainer {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
+  color: #ffffff;
   text-align: center;
+  padding: 40px;
 }
+
 .jobFailureImg {
-  height: 250px;
-  width: 250px;
-  margin: 0;
+  width: 300px;
+  margin-bottom: 20px;
 }
+
 .jobFailhead {
-  color: white;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 600;
-  text-align: center;
-  margin: 0;
+  margin-bottom: 10px;
 }
+
 .jobfailContent {
+  font-size: 15px;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+}
+
+.retryBtn {
   color: white;
-  font-size: 17px;
-  font-weight: 400;
-  text-align: center;
-  margin: 0;
+  background-color: #6366f1;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  height: 35px;
+  padding: 0 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.allJobsContainer {
-  margin-left: 0;
-  padding-left: 0;
+.retryBtn:hover {
+  background-color: #4f46e5;
 }
-@media (min-width: 768px) {
+
+/* ========== Responsive Design ========== */
+@media screen and (max-width: 768px) {
   .jobsContainer {
-    width: 100vw;
-    display: flex;
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-  .allJobsContainer {
-    margin-left: 40px;
-    padding-left: 0;
-  }
-  .jobFailureContainer {
-    margin-top: 40px;
-    margin-left: 130px;
+    flex-direction: column;
+    padding: 20px;
   }
 
-  .inputContainer {
-    display: none;
-  }
-  .inputContainer2 {
-    display: flex;
-    height: 40px;
-    width: 400px;
-    margin-left: 40px;
-  }
-  .input {
-    height: 35px;
-    width: 340px;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 20px;
-  }
-  .SearchIcon {
-    height: 26px;
-    width: 26px;
-    fill: white;
-    margin-right: 15px;
-  }
-  .iconContainer {
-    padding-left: 20px;
-    background-color: #202020;
-    align-self: center;
+  .topSection {
+    width: 100%;
+    margin-bottom: 30px;
   }
 
-  .horline {
-    color: #b6c5ff;
-    width: 20vw;
-    border-width: 0.2px;
-    margin-bottom: 20px;
+  .bottomSection {
+    width: 100%;
   }
 
-  .horline2 {
-    color: #b6c5ff;
-    width: 60vw;
-    border-width: 0.2px;
-    margin-bottom: 20px;
+  .resetButtonBelowLogout {
+    justify-content: center;
+    margin: 20px 0;
   }
-  .jobFailureImg {
-    height: 300px;
-    width: 300px;
-    margin: 0;
+
+  .resetBtn {
+    width: 150px;
   }
 }
