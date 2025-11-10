@@ -146,4 +146,7 @@ Writing clean, reusable components
 
 🙌 Acknowledgements
 
-This project was built as part of NxtWave CCBP 4.0 Academy learning journey.
+🙌 Acknowledgements
+
+This project is inspired by real-world business workflow requirements and built with clean and modular code practices.
+
