@@ -1,5 +1,5 @@
 ```
-#💼 Jobby App
+###💼 Jobby App
 ```
 
 🚀 A responsive job portal web application where users can explore job listings, apply filters, and view detailed job descriptions. Built with modern frontend technologies to provide a smooth user experience.
