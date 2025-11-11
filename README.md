@@ -103,18 +103,18 @@ Response includes: job info, skills, company details, and similar jobs.
 
 ## ▶️ How to Run Locally
 
-# Clone the repo
+## Clone the repo
 
 git clone https://github.com/your-username/jobby-app.git
 cd jobby-app
 
 
-# Install dependencies
+## Install dependencies
 
 npm install
 
 
-# Start the development server
+## Start the development server
 
 npm start
 
