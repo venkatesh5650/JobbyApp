@@ -5,7 +5,7 @@
 🚀 A responsive job portal web application where users can explore job listings, apply filters, and view detailed job descriptions. Built with modern frontend technologies to provide a smooth user experience.
 
 
-✨ Features
+## ✨ Features
 
 🔐 Authentication – Secure login & logout flow.
 
@@ -21,7 +21,7 @@
 
 
 
-🛠 Tech Stack
+## 🛠 Tech Stack
 
 Frontend: React JS, React Router, JSX
 
@@ -63,7 +63,7 @@ Jobby-App/
 └── .gitignore
 ```
 
-🔗 API Documentation
+## 🔗 API Documentation
 
 The app fetches job data from a backend API (simulated). Below are the main endpoints:
 
@@ -101,20 +101,20 @@ GET /jobs/:id/
 
 Response includes: job info, skills, company details, and similar jobs.
 
-▶️ How to Run Locally
+## ▶️ How to Run Locally
 
-Clone the repo
+# Clone the repo
 
 git clone https://github.com/your-username/jobby-app.git
 cd jobby-app
 
 
-Install dependencies
+# Install dependencies
 
 npm install
 
 
-Start the development server
+# Start the development server
 
 npm start
 
@@ -123,7 +123,7 @@ Open in browser
 
 http://localhost:3000
 
-📷 Screenshots
+## 📷 Screenshots
 
 🔐 Login Page
 <img width="1144" height="557" alt="Screenshot 2025-08-29 111602" src="https://github.com/user-attachments/assets/785527e8-bb7b-4c28-9fd3-1c310ce5470c" />
@@ -134,7 +134,7 @@ http://localhost:3000
 <img width="1336" height="587" alt="Screenshot 2025-08-29 111654" src="https://github.com/user-attachments/assets/393be0cc-9e22-4ac0-b109-d24e1681c913" />
 
 
-🌟 What I Learned
+## 🌟 What I Learned
 
 Implementing authentication using JWT tokens
 
