@@ -6,7 +6,7 @@ import {FaStar, FaExternalLinkAlt} from 'react-icons/fa'
 import Loader from 'react-loader-spinner'
 import SimilarJobItem from '../../components/SimilarJobItem/SimilarJobItem'
 import Header from '../../components/Header/Header'
-import { fetchJobDetails } from "../../api"
+import {fetchJobDetails} from '../../api'
 
 import './index.css'
 
@@ -115,7 +115,6 @@ class JobItemDetails extends Component {
 
         <div className="singleJobItemDetails">
           <div className="singleJobContainer">
-            
             {/* Logo, Title, and Rating */}
             <div className="logosContainer">
               <img
@@ -173,7 +172,11 @@ class JobItemDetails extends Component {
               <ul className="allSkillsContainer">
                 {skills.map(skill => (
                   <li className="singleSkillContainer" key={skill.name}>
-                    <img src={skill.imageUrl} alt={skill.name} className="skillImg" />
+                    <img
+                      src={skill.imageUrl}
+                      alt={skill.name}
+                      className="skillImg"
+                    />
                     <p className="skillText">{skill.name}</p>
                   </li>
                 ))}
@@ -184,7 +187,11 @@ class JobItemDetails extends Component {
                   <h1 className="skillsHead">Life at Company</h1>
                   <p className="descriptionCompany">{description}</p>
                 </div>
-                <img src={imageUrl} alt="life_at_company" className="companyLifeImg" />
+                <img
+                  src={imageUrl}
+                  alt="life_at_company"
+                  className="companyLifeImg"
+                />
               </div>
             </div>
           </div>

@@ -12,19 +12,17 @@ import './index.css'
  * - Uses withRouter to access history object for redirection
  */
 const Header = props => {
-  
   /**
    * Clears JWT token and redirects user to login page
    */
   const onClickLogout = () => {
     const {history} = props
     Cookies.remove('jwt_token')
-    history.replace('/login')   // Redirect user after logout
+    history.replace('/login') // Redirect user after logout
   }
 
   return (
     <div className="headerContainer">
-      
       {/* Website Logo - Navigates to Home */}
       <Link to="/">
         <button className="logoBtn" type="button">

@@ -27,7 +27,6 @@ const JobItem = props => {
     // Clicking anywhere on the card navigates to detailed job page
     <Link to={`/jobs/${id}`} className="link-text">
       <div className="singleJobContainer">
-        
         {/* Company logo + job title + rating */}
         <div className="logosContainer">
           <img

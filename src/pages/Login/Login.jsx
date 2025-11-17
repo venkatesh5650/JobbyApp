@@ -1,29 +1,29 @@
 // Login Component with clean, efficient, interviewer-friendly comments
 
-import { Component } from 'react'
+import {Component} from 'react'
 import Cookies from 'js-cookie'
-import { loginUser } from "../../api";
+import {loginUser} from '../../api'
 import './index.css'
 
 class Login extends Component {
   // Component-level state for storing form inputs and error message
-  state = { userName: '', passWord: '', errorMsg: '' }
+  state = {userName: '', passWord: '', errorMsg: ''}
 
   // Update username input
   onChangeUsername = event => {
-    this.setState({ userName: event.target.value })
+    this.setState({userName: event.target.value})
   }
 
   // Update password input
   onChangePassword = event => {
-    this.setState({ passWord: event.target.value })
+    this.setState({passWord: event.target.value})
   }
 
   // Redirect user to home if JWT token already exists
   RedirectToHome = () => {
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
-      const { history } = this.props
+      const {history} = this.props
       history.replace('/')
     }
   }
@@ -32,7 +32,7 @@ class Login extends Component {
   onClickSubmit = async event => {
     event.preventDefault()
 
-    const { userName, passWord } = this.state
+    const {userName, passWord} = this.state
 
     // API call for authentication
     const response = await loginUser(userName, passWord)
@@ -41,20 +41,20 @@ class Login extends Component {
       const data = await response.json()
 
       // Store token in cookies for session management
-      Cookies.set('jwt_token', data.jwt_token, { expires: 5 })
+      Cookies.set('jwt_token', data.jwt_token, {expires: 5})
 
       this.RedirectToHome()
     } else {
       const data = await response.json()
 
       // Reset inputs + show server error message
-      this.setState({ userName: '', passWord: '', errorMsg: data.error_msg })
+      this.setState({userName: '', passWord: '', errorMsg: data.error_msg})
     }
   }
 
   // -------------------- UI --------------------
   render() {
-    const { userName, passWord, errorMsg } = this.state
+    const {userName, passWord, errorMsg} = this.state
 
     return (
       <div className="loginContainer">
@@ -119,4 +119,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Login
