@@ -2,8 +2,9 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {IoIosSearch} from 'react-icons/io'
-import Header from '../Header'
+import Header from '../../components/Header/Header'
 import JobItem from '../JobItem'
+import { fetchJobs, fetchProfile } from "../../api";
 import './index.css'
 
 const employmentTypesList = [
@@ -125,17 +126,13 @@ class Jobs extends Component {
   // ===================== API Calls =====================
   getProfileDetails = async () => {
     this.setState({status: apiStatusConstants.inProgress})
-    const jwtToken = Cookies.get('jwt_token')
-    const url = 'https://apis.ccbp.in/profile'
-    const options = {
-      method: 'GET',
-      headers: {Authorization: `Bearer ${jwtToken}`},
-    }
-    const response = await fetch(url, options)
+  
+    const response = await fetchProfile();
     if (response.ok) {
       const data = await response.json()
       const profile = data.profile_details
-      const updatedData = {
+      const updatedData = 
+      {
         name: profile.name,
         profileImgUrl: profile.profile_image_url,
         shortBio: profile.short_bio,
@@ -152,14 +149,12 @@ class Jobs extends Component {
   getJobsDetails = async () => {
     this.setState({jobDetailsStatus: apiStatusConstants.inProgress})
     const {title, empType, salRange} = this.state
-    const multiEmpType = empType.join(',')
-    const jwtToken = Cookies.get('jwt_token')
-    const url = `https://apis.ccbp.in/jobs?search=${title}&employment_type=${multiEmpType}&minimum_package=${salRange}`
-    const options = {
-      method: 'GET',
-      headers: {Authorization: `Bearer ${jwtToken}`},
-    }
-    const response = await fetch(url, options)
+    
+    const response = await fetchJobs({
+            search: title,
+             empType,
+             salRange,
+  })
     if (response.ok) {
       const data = await response.json()
       const updatedData = data.jobs.map(eachJob => ({

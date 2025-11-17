@@ -4,7 +4,14 @@ import {FaStar} from 'react-icons/fa'
 
 import './index.css'
 
+/**
+ * SimilarJobItem Component
+ * - Reusable UI card for displaying similar job listings
+ * - Receives job details via props and renders a compact job summary
+ * - Used in JobItemDetails page to suggest related job opportunities
+ */
 const SimilarJobItem = props => {
+  // Extract job details from props for cleaner JSX
   const {similarJobDetails} = props
   const {
     companyLogoUrl,
@@ -15,8 +22,10 @@ const SimilarJobItem = props => {
     title,
     packagePerAnnum,
   } = similarJobDetails
+
   return (
     <li className="similarsingleJobContainer">
+      {/* Company Logo + Title + Rating */}
       <div className="logosContainer">
         <img
           src={companyLogoUrl}
@@ -31,8 +40,12 @@ const SimilarJobItem = props => {
           </div>
         </div>
       </div>
+
+      {/* Job Description */}
       <h1 className="similarJobDescript">Description</h1>
       <p className="smJobDescription">{jobDescription}</p>
+
+      {/* Location + Employment Type + Package */}
       <div className="locationSalaryContainer">
         <div className="locContainer">
           <div className="singleLoc">

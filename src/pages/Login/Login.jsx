@@ -1,51 +1,61 @@
-import {Component} from 'react'
+// Login Component with clean, efficient, interviewer-friendly comments
+
+import { Component } from 'react'
 import Cookies from 'js-cookie'
+import { loginUser } from "../../api";
 import './index.css'
 
 class Login extends Component {
-  state = {userName: '', passWord: '', errorMsg: ''}
+  // Component-level state for storing form inputs and error message
+  state = { userName: '', passWord: '', errorMsg: '' }
 
+  // Update username input
   onChangeUsername = event => {
-    this.setState({userName: event.target.value})
+    this.setState({ userName: event.target.value })
   }
 
+  // Update password input
   onChangePassword = event => {
-    this.setState({passWord: event.target.value})
+    this.setState({ passWord: event.target.value })
   }
 
+  // Redirect user to home if JWT token already exists
   RedirectToHome = () => {
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
-      const {history} = this.props
+      const { history } = this.props
       history.replace('/')
     }
   }
 
+  // Handle login submission
   onClickSubmit = async event => {
     event.preventDefault()
-    const {userName, passWord} = this.state
-    const userDetails = {username: userName, password: passWord}
-    const url = 'https://apis.ccbp.in/login'
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(userDetails),
-    }
 
-    const response = await fetch(url, options)
+    const { userName, passWord } = this.state
+
+    // API call for authentication
+    const response = await loginUser(userName, passWord)
+
     if (response.ok === true) {
       const data = await response.json()
-      const jwtToken = data.jwt_token
-      Cookies.set('jwt_token', jwtToken, {expires: 5})
+
+      // Store token in cookies for session management
+      Cookies.set('jwt_token', data.jwt_token, { expires: 5 })
 
       this.RedirectToHome()
     } else {
       const data = await response.json()
-      this.setState({userName: '', passWord: '', errorMsg: data.error_msg})
+
+      // Reset inputs + show server error message
+      this.setState({ userName: '', passWord: '', errorMsg: data.error_msg })
     }
   }
 
+  // -------------------- UI --------------------
   render() {
-    const {userName, passWord, errorMsg} = this.state
+    const { userName, passWord, errorMsg } = this.state
+
     return (
       <div className="loginContainer">
         <div className="loginCard">
@@ -56,7 +66,10 @@ class Login extends Component {
               className="websitelogo"
             />
           </div>
+
+          {/* Login Form */}
           <form onSubmit={this.onClickSubmit}>
+            {/* Username */}
             <div>
               <label htmlFor="username" className="inputlabel">
                 USERNAME
@@ -73,6 +86,8 @@ class Login extends Component {
                 />
               </div>
             </div>
+
+            {/* Password */}
             <div>
               <label htmlFor="password" className="inputlabel">
                 PASSWORD
@@ -89,6 +104,8 @@ class Login extends Component {
                 />
               </div>
             </div>
+
+            {/* Submit Button + Error Message */}
             <div>
               <button type="submit" className="loginBtn">
                 Login
@@ -102,4 +119,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default Login;

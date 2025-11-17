@@ -4,6 +4,12 @@ import {BsBriefcase} from 'react-icons/bs'
 import {FaStar} from 'react-icons/fa'
 import './index.css'
 
+/**
+ * Single Job Item Component
+ * - Receives one job object via props
+ * - Displays key job details (logo, title, rating, location, salary)
+ * - Wraps entire card with a Link → navigates to detailed job view
+ */
 const JobItem = props => {
   const {singleJobDetails} = props
   const {
@@ -16,9 +22,13 @@ const JobItem = props => {
     jobDescription,
     id,
   } = singleJobDetails
+
   return (
+    // Clicking anywhere on the card navigates to detailed job page
     <Link to={`/jobs/${id}`} className="link-text">
       <div className="singleJobContainer">
+        
+        {/* Company logo + job title + rating */}
         <div className="logosContainer">
           <img
             src={companyLogoUrl}
@@ -33,6 +43,8 @@ const JobItem = props => {
             </div>
           </div>
         </div>
+
+        {/* Location, Employment Type & Salary */}
         <div className="locationSalaryContainer">
           <div className="locContainer">
             <div className="singleLoc">
@@ -44,8 +56,11 @@ const JobItem = props => {
               <p className="empType">{employmentType}</p>
             </div>
           </div>
+
           <p className="packagePerAnnum">{packagePerAnnum}</p>
         </div>
+
+        {/* Short job description */}
         <hr className="horlineNEWXs" />
         <h1 className="descriptures">Description</h1>
         <p className="jobDescriptions">{jobDescription}</p>
