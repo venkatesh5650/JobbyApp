@@ -133,6 +133,12 @@ http://localhost:3000
 
 <img width="1336" height="587" alt="Screenshot 2025-08-29 111654" src="https://github.com/user-attachments/assets/393be0cc-9e22-4ac0-b109-d24e1681c913" />
 
+ Filters View
+
+![Filters View](./public/img/filters.png)
+
+ 
+
 
 ## 🌟 What I Learned
 
