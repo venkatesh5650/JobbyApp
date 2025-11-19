@@ -15,7 +15,6 @@ const SimilarJobItem = props => {
   // Extract job details from props for cleaner JSX
   const {similarJobDetails} = props
   const {
-    id,
     companyLogoUrl,
     employmentType,
     jobDescription,
