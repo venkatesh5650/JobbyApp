@@ -1,9 +1,9 @@
 import {Component} from 'react'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {IoIosSearch} from 'react-icons/io'
 import Header from '../../components/Header/Header'
-import JobItem from '../JobItem'
+import JobItem from '../JobItem/JobItem'
 import {fetchJobs, fetchProfile} from '../../api'
 import './index.css'
 
@@ -57,7 +57,8 @@ class Jobs extends Component {
 
   // ===================== Search =====================
   onChangeSearch = event => {
-    this.setState({searchInput: event.target.value})
+    const {value} = event.target
+    this.setState({searchInput: value})
   }
 
   onClickSearch = () => {

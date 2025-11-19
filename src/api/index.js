@@ -37,6 +37,7 @@ export const fetchJobDetails = async id => {
   const response = await fetch(`${BASE_URL}/jobs/${id}`, {
     headers: {Authorization: `Bearer ${jwtToken}`},
   })
+  console.log(response)
 
   return response
 }

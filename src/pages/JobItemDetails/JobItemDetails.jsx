@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 import {IoLocationSharp} from 'react-icons/io5'
 import {BsBriefcase} from 'react-icons/bs'
 import {FaStar, FaExternalLinkAlt} from 'react-icons/fa'

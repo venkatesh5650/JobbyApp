@@ -3,6 +3,7 @@ import {BsBriefcase} from 'react-icons/bs'
 import {FaStar} from 'react-icons/fa'
 
 import './index.css'
+// import {useParams} from 'react-router-dom/cjs/react-router-dom.min'
 
 /**
  * SimilarJobItem Component
@@ -14,6 +15,7 @@ const SimilarJobItem = props => {
   // Extract job details from props for cleaner JSX
   const {similarJobDetails} = props
   const {
+    id,
     companyLogoUrl,
     employmentType,
     jobDescription,

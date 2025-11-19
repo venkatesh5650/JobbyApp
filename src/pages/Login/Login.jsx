@@ -7,7 +7,16 @@ import './index.css'
 
 class Login extends Component {
   // Component-level state for storing form inputs and error message
-  state = {userName: '', passWord: '', errorMsg: ''}
+  state = {userName: 'rahul', passWord: 'rahul@2021', errorMsg: ''}
+
+  // Autofill login credentials
+  autoFillCredentials = () => {
+    this.setState({
+      userName: 'rahul',
+      passWord: 'rahul@2021',
+      errorMsg: '',
+    })
+  }
 
   // Update username input
   onChangeUsername = event => {
@@ -80,7 +89,7 @@ class Login extends Component {
                   className="inputLogin"
                   type="text"
                   id="username"
-                  placeholder="rahul"
+                  placeholder="Enter Username"
                   value={userName}
                   onChange={this.onChangeUsername}
                 />
@@ -98,7 +107,7 @@ class Login extends Component {
                   className="inputLogin"
                   type="password"
                   id="password"
-                  placeholder="rahul@2021"
+                  placeholder="Enter Password"
                   value={passWord}
                   onChange={this.onChangePassword}
                 />
@@ -107,6 +116,13 @@ class Login extends Component {
 
             {/* Submit Button + Error Message */}
             <div>
+              <button
+                type="button"
+                className="autoFillBtn"
+                onClick={this.autoFillCredentials}
+              >
+                Autofill Credentials
+              </button>
               <button type="submit" className="loginBtn">
                 Login
               </button>

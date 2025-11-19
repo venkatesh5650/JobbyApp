@@ -7,7 +7,7 @@
 }
 .loginCard {
   background-color: #272727;
-  height: 460px;
+  height: 490px;
   width: 400px;
   padding: 30px;
   border-radius: 15px;
@@ -102,4 +102,25 @@
     margin: 0;
     padding: 0;
   }
+}
+
+.autoFillBtn {
+  height: 45px;
+  width: 330px;
+  background-color: #3b82f6; /* Blue */
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: 0.2s ease-in-out;
+}
+
+.autoFillBtn:hover {
+  background-color: white;
+  color: #3b82f6; /* Blue text on hover */
+  border: 2px solid #3b82f6;
 }
