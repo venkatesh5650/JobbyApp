@@ -12,6 +12,12 @@
   padding: 30px;
   border-radius: 15px;
 }
+@media (max-width: 768px) {
+  .loginCard {
+    height: 600px;
+    width: 320px;
+  }
+}
 .websitelogo {
   height: 60px;
   width: 132px;
@@ -117,6 +123,13 @@
   cursor: pointer;
   margin-bottom: 15px;
   transition: 0.2s ease-in-out;
+}
+@media (max-width: 768px) {
+  .autoFillBtn {
+    height: 40px;
+    width: 270px;
+    font-size: 18px;
+  }
 }
 
 .autoFillBtn:hover {

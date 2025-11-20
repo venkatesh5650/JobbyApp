@@ -9,6 +9,10 @@ class Login extends Component {
   // Component-level state for storing form inputs and error message
   state = {userName: 'rahul', passWord: 'rahul@2021', errorMsg: ''}
 
+  componentDidMount() {
+    this.RedirectToHome()
+  }
+
   // Autofill login credentials
   autoFillCredentials = () => {
     this.setState({

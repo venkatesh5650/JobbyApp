@@ -135,8 +135,14 @@
 }
 
 .similarJobsContainer {
-  width: 100vw;
+  width: 100%;
   margin: 0;
+}
+@media (max-width: 768px) {
+  .similarJobsContainer {
+    width: 90vw;
+    margin: 0;
+  }
 }
 .descriptLink {
   display: flex;
