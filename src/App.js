@@ -6,7 +6,7 @@ import Login from './pages/Login/Login'
 import Home from './pages/Home/Home'
 import Jobs from './pages/Jobs/Jobs'
 import JobItemDetails from './pages/JobItemDetails/JobItemDetails'
-import ProtectedRoute from './components/ProtectedRoute'
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import NotFound from './pages/NotFound/NotFound'
 
 import './App.css'
