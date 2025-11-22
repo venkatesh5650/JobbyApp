@@ -1,139 +1,145 @@
+/* ========== Base Container ========== */
 .loginContainer {
-  background-color: black;
+  background-color: #000;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.loginCard {
-  background-color: #272727;
-  height: 490px;
-  width: 400px;
-  padding: 30px;
-  border-radius: 15px;
-}
-@media (max-width: 768px) {
-  .loginCard {
-    height: 600px;
-    width: 320px;
-  }
-}
-.websitelogo {
-  height: 60px;
-  width: 132px;
-  margin-bottom: 20px;
-}
-.loginInputContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-top: 10px;
+  padding: 20px;
 }
 
-.inputlabel {
-  text-align: start;
-  font-size: 22px;
-  font-weight: 600;
-  color: white;
-  margin: 0;
-  padding: 0;
+/* ========== Card Layout ========== */
+.loginCard {
+  background-color: #1f1f1f;
+  width: 380px;
+  padding: 32px 28px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
-.inputLogin {
-  margin: 0;
-  padding-top: 7px;
-  font-size: 25px;
-  color: white;
-  height: 50px;
-  background: transparent;
-  border: none;
-  outline: none;
-  padding-left: 20px;
-}
-.loginBtn {
-  height: 50px;
-  width: 330px;
-  background-color: #6366f1;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  font-size: 25px;
-  font-weight: 600;
-  color: white;
-  margin-top: 20px;
-  cursor: pointer;
-  margin-bottom: 0;
-}
-.errorMsg {
-  margin: 0;
-  color: red;
-  font-size: 20px;
-  font-weight: 400;
-  text-align: start;
-}
+
+/* Logo */
 .logoContainer {
   display: flex;
   justify-content: center;
-}
-.loginInputContainer {
-  height: 50px;
-  width: 320px;
-  border: solid 2px #64748b;
-  margin-bottom: 20px;
-}
-@media (max-width: 768px) {
-  .loginInputContainer {
-    height: 50px;
-    width: 260px;
-    border: solid 2px #64748b;
-    margin-bottom: 20px;
-  }
-  .websitelogo {
-    height: 40px;
-    width: 92px;
-    margin-bottom: 20px;
-  }
-  .loginCard {
-    height: 400px;
-    width: 320px;
-  }
-  .loginBtn {
-    height: 40px;
-    width: 270px;
-  }
-  .inputLogin {
-    margin: 0;
-    background: transparent;
-  }
-  .inputlabel {
-    margin: 0;
-    padding: 0;
-  }
+  margin-bottom: 25px;
 }
 
-.autoFillBtn {
-  height: 45px;
-  width: 330px;
-  background-color: #3b82f6; /* Blue */
-  color: white;
+.websitelogo {
+  height: 60px;
+  width: 148px;
+}
+
+/* ========== Input Styles ========== */
+.loginInputContainer {
+  width: 100%;
+  border: 2px solid #64748b;
+  border-radius: 10px;
+  height: 50px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.inputlabel {
+  font-size: 16px;
+  color: #d3d3d3;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.inputLogin {
+  background: transparent;
   border: none;
   outline: none;
+  font-size: 18px;
+  color: white;
+  width: 100%;
+}
+
+/* ========== Buttons ========== */
+.autoFillBtn,
+.loginBtn {
+  width: 100%;
+  height: 50px;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
-  margin-bottom: 15px;
+  border: none;
+  outline: none;
   transition: 0.2s ease-in-out;
+  margin-top: 10px;
 }
-@media (max-width: 768px) {
-  .autoFillBtn {
-    height: 40px;
-    width: 270px;
-    font-size: 18px;
-  }
+
+/* Autofill Button */
+.autoFillBtn {
+  background-color: #3b82f6;
+  color: white;
 }
 
 .autoFillBtn:hover {
   background-color: white;
-  color: #3b82f6; /* Blue text on hover */
+  color: #3b82f6;
   border: 2px solid #3b82f6;
+}
+
+/* Login Button */
+.loginBtn {
+  background-color: #6366f1;
+  color: white;
+}
+
+.loginBtn:hover {
+  background-color: #7c81ff;
+}
+
+/* Error */
+.errorMsg {
+  color: #f87171;
+  font-size: 16px;
+  text-align: left;
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* ========== Full Mobile Responsive ========== */
+@media (max-width: 480px) {
+  .loginCard {
+    width: 100%;
+    max-width: 330px;
+    padding: 28px 25px;
+  }
+
+  .websitelogo {
+    height: 50px;
+    width: 120px;
+  }
+
+  .inputLogin {
+    font-size: 16px;
+  }
+
+  .autoFillBtn,
+  .loginBtn {
+    height: 48px;
+    font-size: 17px;
+  }
+}
+
+/* Extra tiny screens */
+@media (max-width: 380px) {
+  .loginCard {
+    max-width: 300px;
+    padding: 24px 20px;
+  }
+
+  .autoFillBtn,
+  .loginBtn {
+    height: 45px;
+  }
 }
